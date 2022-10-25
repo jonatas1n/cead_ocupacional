@@ -19,9 +19,9 @@ class LandingPage(MetadataPageMixin, Page):
         ]))
     ], null=True, blank=True)
 
-    schedulling_btn_text = models.CharField(null=False, blank=False, default="Realizar agendamento", max_length=256)
+    scheduling_btn_text = models.CharField(null=False, blank=False, default="Realizar agendamento", max_length=256)
 
-    schedulling_subtext = models.CharField(null=True, blank=True, max_length=256)
+    scheduling_subtext = models.CharField(null=True, blank=True, max_length=256)
 
     popup = StreamField([
         ("popup", StructBlock([
@@ -33,9 +33,9 @@ class LandingPage(MetadataPageMixin, Page):
 
     content_panels = Page.content_panels + [
         StreamFieldPanel("ads"),
+        FieldPanel("scheduling_btn_text"),
+        FieldPanel("scheduling_subtext"),
         StreamFieldPanel("popup"),
-        FieldPanel("schedulling_btn_text"),
-        FieldPanel("schedulling_subtext")
     ]
 
 class SurveysPage(MetadataPageMixin, Page):
