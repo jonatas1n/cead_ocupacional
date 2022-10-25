@@ -1,11 +1,59 @@
-.windows {
-  display: flex;
-  flex-wrap: wrap;
+.sides {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 2rem;
+  height: calc(100vh - 9.75rem);
 }
 
 .scheduling {
   display: flex;
-  flex: 1;
   flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.scheduling .logo {
+  width: 12rem;
+  margin-bottom: 4rem;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
+
+.carousel__pics {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  border-radius: .5rem;
+}
+
+.carousel__pics img {
+  width: 100%;
+  height: auto;
+}
+
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  background-color: #000000aa;
+  border-radius: 50%;
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  place-items: center;
+}
+
+.carousel__btn img {
+  filter: invert(100%);
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.carousel__btn.right {right: 1rem;}
+.carousel__btn.left {left: 1rem;}

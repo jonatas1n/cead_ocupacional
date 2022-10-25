@@ -8,7 +8,7 @@ body {
     margin: 0;
     overflow-x: hidden;
     min-width: 100vh;
-    background-attachment: fixed;
+    background-color: #eee;
 }
 
 section {
@@ -141,7 +141,6 @@ a:hover {text-decoration: underline;}
 
 main.container {
     flex-grow: 1;
-    background: white;
 }
 
 .bg_red{background-color: red;}
@@ -187,10 +186,4 @@ main.container {
         max-width: 100%;
         height: auto;
     }
-}
-
-@media (max-width: 1600px) {
-    body {background: unset;}
-
-    .container {margin-left: auto;}
 }

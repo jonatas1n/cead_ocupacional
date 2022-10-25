@@ -12,7 +12,7 @@
 
 <main class="container">
 
-{% for popup in page.popup %}
+    {% for popup in page.popup %}
         {%if popup.value.active %}
             <div class="popup open" id="{{ popup.id }}">
                 <div class="popup__content fade-down">
@@ -32,16 +32,25 @@
         {% endif %}
     {% endfor %}
 
-    <div class="windows">
+    <div class="sides">
         <div class="scheduling">
             <div class="scheduling__content">
                 <a href="#">
-                    <button class="scheduling__btn"> {{ page.schedulling_btn_text }}</button>
+                    <button class="scheduling__btn"> {{ page.scheduling_btn_text }}</button>
                 </a>
-                <p>{{ page.schedulling_subtext }}</p>
+                {% if page.scheduling_subtext %} <p>{{ page.scheduling_subtext }}</p> {% endif %}
             </div>
         </div>
-        <div class="ads"></div>
+        <div class="carousel">
+            <div class="carousel__btn left"><img src="{% static 'img/icons/chevron-left.svg'%}"></div>
+            <div class="carousel__btn right"><img src="{% static 'img/icons/chevron-right.svg'%}"></div>
+            <div class="carousel__dots"></div>
+            <div class="carousel__pics">
+                {% for pic in page.ads %}
+                    {% image pic.value.image original %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
     
 </main>
