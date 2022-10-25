@@ -7,10 +7,7 @@ body {
     padding: 0;
     margin: 0;
     overflow-x: hidden;
-    background: url('/static/img/curvas_lateral-dir.svg');
-    background-size: 51vh;
-    background-repeat: no-repeat;
-    background-position: 87vw 0vh;
+    min-width: 100vh;
     background-attachment: fixed;
 }
 
@@ -136,11 +133,10 @@ a:hover {text-decoration: underline;}
 .hide {display: none;}
 
 .container {
-    width: 80%;
+    width: 90%;
     height: 100%;
     margin-inline: auto;
-    max-width: 750px;
-    margin-left: 4.5rem;
+    max-width: 1366px;
 }
 
 main.container {

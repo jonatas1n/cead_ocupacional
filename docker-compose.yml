@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
 
-  farol_verde_server:
+  cead_server:
     environment:
       - PYTHONUNBUFFERED=1
     env_file:
@@ -13,14 +13,14 @@ services:
       - "4000:8000"
     volumes:
       - ./landing:/landing
-      - farol_verde:/tmp/farol_verde_db
+      - cead:/tmp/cead_db
       - media:/landing/media
-    container_name: farol_verde_server
+    container_name: cead_server
     depends_on:
-      - farol_verde_db
+      - cead_db
     entrypoint: ["/bin/bash", "run.sh"]
 
-  farol_verde_db:
+  cead_db:
     env_file:
       - variables.env
     image: postgres:13.1
@@ -33,12 +33,12 @@ services:
       - "5656"
     volumes:
       - backups:/var/lib/postgresql/data
-    container_name: farol_verde_db
+    container_name: cead_db
     command: -p 5656
     ports:
       - "5656:5656"
 
 volumes:
-  farol_verde:
+  cead:
   media:
   backups:

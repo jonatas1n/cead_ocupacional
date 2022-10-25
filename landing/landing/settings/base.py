@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     "home",
     "landing",
     "search",
-    "blog",
-    "candidate",
     "wagtailfontawesome",
     "wagtailmetadata",
     "wagtail_color_panel",
