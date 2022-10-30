@@ -2,7 +2,39 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-gap: 2rem;
-  height: calc(100vh - 9.75rem);
+  transition: .5s;
+}
+
+.sides.open {
+  grid-template-columns: 1fr 1fr;
+}
+
+.sides.open .carousel__pics img {
+  object-fit: contain;
+}
+
+.sides.open .scheduling__btn {
+  visibility: hidden;
+}
+
+.scheduling__btn {
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  line-height: unset;
+}
+
+.sides.open .calendar {
+  display: grid;
+}
+
+.sides.open .calendar__close {
+  visibility: visible;
+}
+
+.sides > * {height: 95%;}
+
+.scheduling__content {
+  width: 100%;
 }
 
 .scheduling {
@@ -11,6 +43,7 @@
   align-items: start;
   justify-content: center;
   gap: 2rem;
+  width: 100%;
 }
 
 .scheduling .logo {

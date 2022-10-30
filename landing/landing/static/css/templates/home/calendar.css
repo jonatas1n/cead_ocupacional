@@ -1,0 +1,42 @@
+.calendar {
+    display: none;
+    grid-gap: 1rem;
+}
+
+.calendar__months {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--dark-blue);
+    color: white;
+    border-radius: .5rem;
+}
+
+.calendar__items {
+    display: grid;
+    grid-template-columns: repeat(7 , 1fr);
+    grid-template-rows: repeat(5 , 3rem);
+    grid-gap: .75rem;
+}
+
+.calendar__item {
+    display: flex;
+    padding: .5rem;
+    border-radius: .5rem;
+    background: #87DD79;
+    cursor: pointer;
+}
+
+.calendar__item:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.calendar__item:disabled {
+    cursor: unset;
+    background: #C7C7C7;
+}
+
+.calendar__close {
+    visibility: hidden;
+}

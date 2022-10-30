@@ -1,43 +1,37 @@
-const carouselSlides = document.querySelectorAll('.carousel__slide');
-const carouselDots = document.querySelectorAll('.carousel__dot');
-var currentSlide = 0;
-var slideTransition = true;
-const maxState = carouselSlides.length - 1;
+const carousel = document.querySelector(".carousel");
+const carouselPics = document.querySelector(".carousel__pics");
 
-function render() {
-    carouselSlides.forEach((slide, key) => {
-        if(key === this.currentState) return
-        carouselDots[key].classList.remove('active');
-        slide.classList.remove('active');
-    });
+const prevBtn = document.querySelector(".carousel__btn.left");
+const nextBtn = document.querySelector(".carousel__btn.right");
 
-    carouselSlides[currentSlide].classList.add('active');
-    carouselDots[currentSlide].classList.add('active');
+const state = {
+    actual: 0,
+    count: carouselPics.children.length,
 }
 
-function nextStage() {
-    if (currentSlide == maxState) {
-        currentSlide = -1;
-    }
-    currentSlide += 1;
-    render()
+if(state.count == 1) {
+    nextBtn.classList.add('hide');
+    prevBtn.classList.add('hide');
 }
 
+const nextPic = () => {
+    carouselPics.querySelectorAll('img')
+        .forEach(pic => pic.classList.remove('active'));
 
-render();
-setInterval( () => {
-    console.log(slideTransition);
-    if(slideTransition) {
-        nextStage();
-    }
-}, 3000 );
+    state.actual++;
+    if(state.actual == state.count) state.actual = 0;
+    let pic = carouselPics.querySelector(`img:nth-child(${state.actual + 1})`);
+    pic.classList.add('active');
+}
 
-carouselDots.forEach( (dot, key) => {
-    dot.addEventListener('click', () => {
-        currentSlide = key;
-        render();
+const prevPic = () => {
+    carouselPics.querySelectorAll('img')
+        .forEach(pic => pic.classList.remove('active'));
 
-        slideTransition = false;
-    }
-    );
-})
+    state.actual--;
+    if(state.actual < 0) state.actual += state.count;
+    let pic = carouselPics.querySelector(`img:nth-child(${state.actual + 1})`);
+    pic.classList.add('active');
+}
+
+if (state.count > 1) setInterval(nextPic, 4000);

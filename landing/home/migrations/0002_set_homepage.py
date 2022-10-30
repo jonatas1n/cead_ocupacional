@@ -10,6 +10,7 @@ import wagtailstreamforms.blocks
 from wagtail.core.models import Page, Site
 from home.models import LandingPage
 
+
 def create_set_home_page(apps, schema_editor):
     root = Page.get_first_root_node()
 
@@ -28,9 +29,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('home', '0001_initial'),
+        ("home", "0001_initial"),
     ]
 
-    operations = [
-        migrations.RunPython(create_set_home_page)
-    ]
+    operations = [migrations.RunPython(create_set_home_page)]

@@ -35,12 +35,12 @@
     <div class="sides">
         <div class="scheduling">
             <div class="scheduling__content">
-                <a href="#">
-                    <button class="scheduling__btn"> {{ page.scheduling_btn_text }}</button>
-                </a>
+                <button onclick="openScheduling()" class="scheduling__btn"> {{ page.scheduling_btn_text }}</button>
                 {% if page.scheduling_subtext %} <p>{{ page.scheduling_subtext }}</p> {% endif %}
+                {% include 'home/calendar.html' %}
             </div>
         </div>
+        
         <div class="carousel">
             <div class="carousel__btn left"><img src="{% static 'img/icons/chevron-left.svg'%}"></div>
             <div class="carousel__btn right"><img src="{% static 'img/icons/chevron-right.svg'%}"></div>
@@ -52,11 +52,11 @@
             </div>
         </div>
     </div>
-    
 </main>
 
 <script type="text/javascript" src="{% static 'js/animations/general.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/components/popup.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/home/scheduling.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/home/carousel.js' %}"></script>
 
 {% endblock %}

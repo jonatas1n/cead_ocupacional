@@ -1,0 +1,20 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/templates/home/calendar.css' %}">
+
+<button onclick="closeScheduling()" class="calendar__close"> <i class="fas fa-chevron-left"></i></button>
+
+<div class="calendar">
+    <div class="calendar__months">
+        <button class="calendar__btn prev"><i class="fas fa-chevron-left"></i></button>
+        <div class="calendar__month">Fevereiro</div>
+        <button class="calendar__btn next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="calendar__items">
+        {% for i in days %}
+            <div class="calendar__item">
+                {{ i }}
+            </div>
+        {% endfor %}
+    </div>
+</div>

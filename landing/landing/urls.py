@@ -10,12 +10,15 @@ from wagtail.contrib.sitemaps.views import sitemap
 from django.conf.urls.static import static
 
 from search import views as search_views
+from survey.views import get_hours, get_months
 
 urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
+    path("get_hours/", get_hours, name="hours"),
+    path("get_months/", get_months, name="months"),
     path("sitemap.xml", sitemap),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
