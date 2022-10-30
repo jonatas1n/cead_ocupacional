@@ -22,10 +22,15 @@
 
 .calendar__item {
     display: flex;
+    width: 100%;
     padding: .5rem;
     border-radius: .5rem;
     background: #87DD79;
     cursor: pointer;
+}
+
+.calendar__item.other-month {
+    opacity: .6;
 }
 
 .calendar__item:hover {
@@ -39,4 +44,27 @@
 
 .calendar__close {
     visibility: hidden;
+}
+
+.hours__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    margin-top: 1rem;
+}
+
+.hours__item {
+    display: flex;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+    padding: .5rem;
+    border-radius: .5rem;
+    background: #87DD79;
+    font-weight: bold;
+}
+
+.hours__item:hover{
+    text-decoration: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

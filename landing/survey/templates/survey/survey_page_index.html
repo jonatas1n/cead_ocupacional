@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static i18n wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/templates/home/home.css' %}">
+
+<main class="container">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><div class="icon bg_white"></div> {{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% include_block page.survey %}
+</main>
+
+{% endblock %}

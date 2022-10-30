@@ -1,20 +1,96 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/templates/home/calendar.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/components/modal.css' %}">
 
 <button onclick="closeScheduling()" class="calendar__close"> <i class="fas fa-chevron-left"></i></button>
 
 <div class="calendar">
     <div class="calendar__months">
-        <button class="calendar__btn prev"><i class="fas fa-chevron-left"></i></button>
+        <button onclick="prevMonth()" class="calendar__btn prev"><i class="fas fa-chevron-left"></i></button>
         <div class="calendar__month">Fevereiro</div>
-        <button class="calendar__btn next"><i class="fas fa-chevron-right"></i></button>
+        <button onclick="nextMonth()" class="calendar__btn next"><i class="fas fa-chevron-right"></i></button>
     </div>
-    <div class="calendar__items">
-        {% for i in days %}
-            <div class="calendar__item">
-                {{ i }}
-            </div>
-        {% endfor %}
+    <div class="calendar__items"></div>
+
+    
+</div>
+
+<div class="modal hours">
+    <div class="modal__content">
+        <div class="modal__header">
+            <h2>Horários disponíveis</h2>
+            <button onclick='toggleHoursModal()'><i class="fa fa-times"></i></button>
+        </div>
+        <div class="hours__items"></div>
     </div>
 </div>
+
+<script>
+    const calendarTitle = document.querySelector('.calendar__month');
+    const calendarItems = document.querySelector('.calendar__items');
+    const hoursItems = document.querySelector('.hours__items');
+    const hoursModal = document.querySelector('.hours');
+    let indexMonth = 0;
+
+    function getMonths() {
+        let url = '/get_months';
+        if(indexMonth > 0) url += '?month_index=' + indexMonth;
+
+        $.ajax({url: url})
+            .done(data => {
+                let { days_after_sunday, days, title } = data;
+                
+                calendarTitle.innerText = title;
+                calendarItems.innerHTML = '';
+
+                days.forEach( (day) => {
+                    let {day_num, week_day, url_parameter, status, this_month, date} = day;
+                    let newItem = document.createElement('button');
+
+                    newItem.classList.add('calendar__item');
+                    if(!this_month) newItem.classList.add('other-month');
+
+                    newItem.disabled = !status;
+                    newItem.innerText = `${day_num} ${week_day}`;
+                    newItem.addEventListener( 'click', () => getHours(date) )
+                    calendarItems.appendChild(newItem);
+                } )
+            })
+    }
+
+    const toggleHoursModal = () => hoursModal.classList.toggle('open')
+
+    function getHours(date) {
+        toggleHoursModal();
+
+        $.ajax({url: '/get_hours?date=' + date})
+            .done( hours => {
+                hoursItems.innerHTML = '';
+                hours.forEach( hour => {
+                    let newItem = document.createElement('a');
+                    newItem.classList.add('hours__item');
+                    newItem.innerText = hour;
+                    newItem.href = `/survey?date=${date}&hour=${hour}`;
+                    hoursItems.appendChild(newItem);
+                })
+            } )
+    }
+
+    function nextMonth() {
+        if(indexMonth == 6) return;
+
+        indexMonth++;
+        getMonths();
+    }
+
+    function prevMonth() {
+        if(indexMonth == 0) return;
+
+        indexMonth--;
+        getMonths();
+    }
+
+    getMonths();
+
+</script>
