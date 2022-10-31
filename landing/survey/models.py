@@ -29,14 +29,7 @@ class SurveyPage(MetadataPageMixin, Page):
     date = models.DateField(blank=False, null=False)
     hour = models.TimeField(blank=False, null=False)
 
-    survey = models.ForeignKey(
-        "wagtailstreamforms.FormSubmission",
-        verbose_name=("Enquete"),
-        on_delete=models.CASCADE,
-    )
-
     content_panels = Page.content_panels + [
         FieldPanel("date"),
         FieldPanel("hour"),
-        FieldPanel("survey"),
     ]

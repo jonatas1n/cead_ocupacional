@@ -7,13 +7,14 @@
 
 <main class="container">
     {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><div class="icon bg_white"></div> {{ message }}</li>
-        {% endfor %}
-    </ul>
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><div class="icon bg_white"></div> {{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
-    {% include_block page.survey %}
+
+    {% include_block page.surveys %}
 </main>
 
 {% endblock %}
