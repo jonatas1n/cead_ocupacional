@@ -10,7 +10,7 @@ services:
     build:
       context: ./
     ports:
-      - "${PORT}:8000"
+      - "4000:8000"
     volumes:
       - ./landing:/landing
       - cead:/tmp/cead_db
