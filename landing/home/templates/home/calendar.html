@@ -3,7 +3,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/templates/home/calendar.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/components/modal.css' %}">
 
-<button onclick="closeScheduling()" class="calendar__close"> <i class="fas fa-chevron-left"></i></button>
+<div class="calendar__close">
+    <button onclick="closeScheduling()">Fechar <i class="fas fa-times"></i></button>
+</div>
 
 <div class="calendar">
     <div class="calendar__months">
@@ -12,8 +14,6 @@
         <button onclick="nextMonth()" class="calendar__btn next"><i class="fas fa-chevron-right"></i></button>
     </div>
     <div class="calendar__items"></div>
-
-    
 </div>
 
 <div class="modal hours">
@@ -35,7 +35,7 @@
 
     function getMonths() {
         let url = '/get_months';
-        if(indexMonth > 0) url += '?month_index=' + indexMonth;
+        if (indexMonth > 0) url += '?month_index=' + indexMonth;
 
         $.ajax({url: url})
             .done(data => {
@@ -52,7 +52,7 @@
                     if(!this_month) newItem.classList.add('other-month');
 
                     newItem.disabled = !status;
-                    newItem.innerText = `${day_num} ${week_day}`;
+                    newItem.innerHTML = `${day_num} <small style='margin-left: .125rem'> (${week_day}) </small>`;
                     newItem.addEventListener( 'click', () => getHours(date) )
                     calendarItems.appendChild(newItem);
                 } )

@@ -1,89 +1,64 @@
 footer {
-    min-height: 4rem;
-    background: var(--dark-blue);
-    padding: 1rem 0;
-    position: relative;
+    display: flex;
+    margin-top: 2rem;
+    padding-block: 1rem;
 }
 
-footer .footer__content {
+.social {
     display: flex;
-    flex-direction: column;
-    place-items: flex-end;
-    justify-content: space-evenly;
-    gap: 2rem;
-    max-width: unset;
+    gap: 1rem;
 }
 
-footer .footer__brandings {
+.social__icon {
     display: flex;
-    flex-wrap: wrap;
+    padding: 1rem;
     align-items: center;
-    gap: 2.5rem;
-}
-
-footer .footer__links {
-    display: flex;
-    gap: 2.5rem;
-}
-
-footer .footer__brandings span {
-    color: white;
-    font-style: italic;
-    font-weight: 500;
-}
-
-footer a {
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 1rem;
     color: white;
     text-decoration: none;
 }
 
-footer .footer-img {
-    display: flex;
-    place-items: center;
-    justify-content: center;
-    width: 100%;
-    border-bottom: 1px solid var(--light-color);
+.social__icon:nth-child(2) {
+    animation-delay: 200ms;
 }
 
-footer img {
-    width: 140px;
+.social__icon:nth-child(3) {
+    animation-delay: 400ms;
 }
 
-footer .footer-menu {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    width: 60%;
+.social__icon:nth-child(4) {
+    animation-delay: 600ms;
 }
 
-/* 
-@media (max-width: 1200px) {
-    .footer--normal {
-        display: none;
-    }
+.social__icon:nth-child(5) {
+    animation-delay: 800ms;
+}
 
-    .footer--mobile {
-        display: block;
-    }
+.social__icon:hover {
+    text-decoration: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
 
-    .footer--mobile footer {
-        height: 7.5625rem;
-        background: var(--gray);
-    }
+.social__icon.whatsapp {
+    background: #40c351;
+}
 
-    .footer--mobile a {
-        text-transform: uppercase;
-        text-decoration: underline;
-        font-size: 0.875rem;
-        font-weight: bold;
-    }
+.social__icon.instagram {
+    background: #bc2a8d;
+}
 
-    .footer--mobile .footer-content {
-        place-items: start;
-        margin-left: 1.9375rem;
-    }
+.social__icon.twitter {
+    background: #1da1f2;
+}
 
-    .footer__icon {
-        margin-left: 9px;
-    }
-} */
+.social__icon.facebook {
+    background: #4267b2;
+}
+
+.social__icon img {
+    filter: invert(1);
+    width: 2rem;
+    height: 2rem;
+}

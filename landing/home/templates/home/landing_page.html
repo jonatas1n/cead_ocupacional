@@ -34,8 +34,10 @@
     <div class="sides">
         <div class="scheduling">
             <div class="scheduling__content">
-                <button onclick="openScheduling()" class="scheduling__btn"> {{ page.scheduling_btn_text }}</button>
-                {% if page.scheduling_subtext %} <p>{{ page.scheduling_subtext }}</p> {% endif %}
+                <div class="scheduling__start">
+                    <button onclick="openScheduling()" class="scheduling__btn"> {{ page.scheduling_btn_text }}</button>
+                    {% if page.scheduling_subtext %} <p>{{ page.scheduling_subtext }}</p> {% endif %}
+                </div>
                 {% include 'home/calendar.html' %}
             </div>
         </div>
@@ -46,7 +48,8 @@
             <div class="carousel__dots"></div>
             <div class="carousel__pics">
                 {% for pic in page.ads %}
-                    {% image pic.value.image original %}
+                    {% image pic.value.image original as ad_image %}
+                    <img src="{{ad_image.url}}">
                 {% endfor %}
             </div>
         </div>

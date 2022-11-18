@@ -43,7 +43,16 @@
 }
 
 .calendar__close {
+    display: flex;
+    justify-content: flex-end;
     visibility: hidden;
+    margin-bottom: 2rem;
+}
+
+.calendar__close button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .hours__items {

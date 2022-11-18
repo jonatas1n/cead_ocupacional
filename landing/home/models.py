@@ -10,6 +10,7 @@ from wagtail.core.blocks import (
     StructBlock,
     CharBlock,
     URLBlock,
+    ChoiceBlock
 )
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -63,6 +64,26 @@ class LandingPage(MetadataPageMixin, Page):
         blank=True,
     )
 
+    social_media = StreamField(
+        [
+            (
+                "social_media",
+                StructBlock(
+                    [
+                        ("service", ChoiceBlock(label="Rede Social", choices=[
+                            ("instagram", "Instagram"),
+                            ("facebook", "Facebook"),
+                            ("twitter", "Twitter"),
+                        ])),
+                        ("link", URLBlock(label="Link")),
+                    ]
+                ),
+            )
+        ],
+        null=True,
+        blank=True,
+    )
+
     def get_context(self, request):
         context = super(LandingPage, self).get_context(request)
         context["days"] = [29, 30, 31] + list(range(1, 32)) + [1]
@@ -72,5 +93,13 @@ class LandingPage(MetadataPageMixin, Page):
         StreamFieldPanel("ads"),
         FieldPanel("scheduling_btn_text"),
         FieldPanel("scheduling_subtext"),
+        StreamFieldPanel("social_media"),
         StreamFieldPanel("popup"),
     ]
+
+class ReturnPage(Page):
+    is_creatable = False
+    pass
+
+class Contact(Page):
+    pass

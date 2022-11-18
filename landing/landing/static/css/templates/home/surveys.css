@@ -1,5 +1,8 @@
 form {
     margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
 }
 
 h2 {
@@ -21,6 +24,14 @@ h2 {
     grid-auto-flow: row;
     grid-gap: .5rem;
     margin-bottom: 1rem;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+.form-check input {
+    width: min-content;
 }
 
 .field-row ul {
@@ -79,14 +90,6 @@ input[type="submit"], .modal__toggle, .modal__close.submit {
     justify-self: center;
     cursor: pointer;
     text-decoration: none;
-}
-
-.field-row li {list-style: none;}
-
-.field-row label {
-    display: flex;
-    gap: .5rem;
-    align-items: center;
 }
 
 .field-row li {list-style: none;}

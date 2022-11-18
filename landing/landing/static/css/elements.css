@@ -19,7 +19,7 @@ button {
     background-color: var(--dark-blue);
     color: white;
     border: none;
-    border-radius: 100vmax;
+    border-radius: 1rem;
     font-size: 1.125rem;
     font-weight: bold;
     transition: 0.25s;

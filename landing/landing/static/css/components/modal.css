@@ -32,6 +32,7 @@
     max-width: 720px;
     min-width: 20rem;
     padding: 1rem;
+    height: 70vh;
     border-radius: .5rem;
     z-index: 100000;
 }
