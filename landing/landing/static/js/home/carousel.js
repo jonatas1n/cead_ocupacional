@@ -16,8 +16,8 @@ if(state.count == 1) {
 
 const nextPic = () => {
     carouselPics.querySelectorAll('img')
-        .forEach(pic => pic.classList.remove('active'));
-
+    .forEach(pic => pic.classList.remove('active'));
+    
     state.actual++;
     if(state.actual == state.count) state.actual = 0;
     let pic = carouselPics.querySelector(`img:nth-child(${state.actual + 1})`);
@@ -27,11 +27,16 @@ const nextPic = () => {
 const prevPic = () => {
     carouselPics.querySelectorAll('img')
         .forEach(pic => pic.classList.remove('active'));
-
-    state.actual--;
+        
+        state.actual--;
     if(state.actual < 0) state.actual += state.count;
     let pic = carouselPics.querySelector(`img:nth-child(${state.actual + 1})`);
     pic.classList.add('active');
 }
 
-if (state.count > 1) setInterval(nextPic, 4000);
+let pic = carouselPics.querySelector(`img:nth-child(${state.actual + 1})`);
+pic.classList.add('active');
+if (state.count > 1) setInterval(nextPic, 8000);
+
+nextBtn.addEventListener( 'click', nextPic);
+prevBtn.addEventListener( 'click', prevPic);
