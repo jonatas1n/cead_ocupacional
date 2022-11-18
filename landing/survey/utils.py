@@ -11,3 +11,6 @@ def get_disponibility(date):
     scheduled = list(map(lambda x: x.hour, apointments))
     hours = [hour for hour in hours if hour not in scheduled]
     return hours
+
+months = [None, 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+week_days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']

@@ -2,14 +2,10 @@ from django.http import HttpRequest, JsonResponse
 from datetime import datetime, timedelta
 from calendar import monthrange
 from dateutil.relativedelta import relativedelta
-from survey.utils import get_disponibility
-
-months = [None, 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-week_days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
+from survey.utils import get_disponibility, months, week_days
 
 def get_hours(request: HttpRequest):
     date = request.GET.get("date")
-    print(date)
     hours = get_disponibility(date)
     
     return JsonResponse(hours, safe=False)
