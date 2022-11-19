@@ -117,29 +117,3 @@ def process_form(page, request, *args, **kwargs):
         return TemplateResponse(
             request, page.get_template(request, *args, **kwargs), context
         )
-
-@register('process_form_submission')
-def save_form_submission_data(instance, form):
-    submission_data = form.cleaned_data.copy()
-
-    print("jonatas", submission_data)
-
-    for field in form.files.keys():
-        if (field not in ['cpf', 'cnpj']):
-            continue
-        submission_data[field] = submission_data[field].replace('.','')
-        submission_data[field] = submission_data[field].replace('-','')
-        submission_data[field] = submission_data[field].replace('/','')
-
-    submission = instance.get_submission_class().objects.create(
-        form_data=json.dumps(submission_data, cls=FormSubmissionSerializer),
-        form=instance
-    )
-
-    for field in form.files:
-        for file in form.files.getlist(field):
-            FormSubmissionFile.objects.create(
-                submission=submission,
-                field=field,
-                file=file
-            )
