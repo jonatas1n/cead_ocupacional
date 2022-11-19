@@ -15,12 +15,14 @@
 
 .sides.open .scheduling__start {
   visibility: hidden;
+  height: 0;
 }
 
 .scheduling__btn {
   font-size: 1.25rem;
   padding: 1.5rem;
   line-height: unset;
+  background: linear-gradient(to top, var(--dark-blue) 60%, var(--blue));
 }
 
 .sides.open .calendar {
@@ -28,7 +30,7 @@
 }
 
 .sides.open .calendar__close {
-  visibility: visible;
+  display: flex;
 }
 
 .sides > * {height: 95%;}
@@ -60,6 +62,27 @@
   height: 65vh;
 }
 
+.carousel__dots {
+  position: absolute;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.carousel__dot {
+  width: .5rem;
+  height: .5rem;
+  opacity: .6;
+  background: transparent;
+  outline: 2px solid black;
+  border-radius: 100vmax;
+}
+
+.carousel__dot.active {
+  background: black;
+}
+
 .carousel__pics {
   display: flex;
   align-items: center;
@@ -69,6 +92,7 @@
 }
 
 .carousel__pics img {
+  border-radius: .5rem;
   width: 100%;
   height: auto;
   display: none;
