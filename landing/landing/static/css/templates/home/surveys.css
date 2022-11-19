@@ -1,4 +1,4 @@
-form {
+.fields {
     margin-bottom: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -81,10 +81,10 @@ input[type="submit"]:hover, .modal__toggle:hover, .modal__close.submit:hover {
     text-decoration: none;
 }
 input[type="submit"], .modal__toggle, .modal__close.submit {
+    background: linear-gradient(to top, var(--dark-blue) 60%, var(--blue));
     color: white;
-    background: var(--primary-color);
     padding: .5rem 1rem;
-    border-radius: 100vmax;
+    border-radius: 1rem;
     font-weight: 700;
     border: none;
     justify-self: center;
