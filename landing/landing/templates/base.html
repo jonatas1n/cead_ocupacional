@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailuserbar wagtailfontawesome %}
+{% load static wagtailcore_tags wagtailuserbar wagtailfontawesome footer %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -69,7 +69,7 @@
 
         {% block content %}{% endblock %}
 
-        {% include 'footer.html' %}
+        {% footer %}
     </div>
     {# Global javascript #}
     <script src="{% static 'js/header.js' %}"></script>

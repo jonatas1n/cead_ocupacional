@@ -5,22 +5,22 @@
         <div class="social">
             {% for social in social_media %}
                 {% if social.value.service == 'instagram' %}
-                    <a class="social__icon fade-up {{social.value.service}}" href="{{social.value.url}}">
+                    <a target="_blank" class="social__icon fade-up {{social.value.service}}" href="{{social.value.link}}">
                         <h4>Visite nosso {{social.value.service}}</h4>
                         <img src="{% static 'img/social_icons/instagram.svg' %}">
                     </a>
                 {% elif social.value.service == 'twitter' %}
-                    <a class="social__icon fade-up {{social.value.service}}" href="{{social.value.url}}">
+                    <a target="_blank" class="social__icon fade-up {{social.value.service}}" href="{{social.value.link}}">
                         <h4>Visite nosso {{social.value.service}}</h4>
                         <img src="{% static 'img/social_icons/twitter.svg' %}">
                     </a>
                 {% elif social.value.service == 'whatsapp' %}
-                    <a class="social__icon fade-up {{social.value.service}}" href="{{social.value.url}}">
+                    <a target="_blank" class="social__icon fade-up {{social.value.service}}" href="{{social.value.link}}">
                         <h4>Entre em contato</h4>
                         <img src="{% static 'img/social_icons/whatsapp.svg' %}">
                     </a>
                 {% elif social.value.service == 'facebook' %}
-                    <a class="social__icon fade-up {{social.value.service}}" href="{{social.value.url}}">
+                    <a target="_blank" class="social__icon fade-up {{social.value.service}}" href="{{social.value.link}}">
                         <h4>Visite nosso {{social.value.service}}</h4>
                         <img src="{% static 'img/social_icons/facebook.svg' %}">
                     </a>

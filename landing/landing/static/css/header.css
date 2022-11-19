@@ -36,6 +36,7 @@ header {
 }
 
 .header__links .number {
+    color: var(--dark-blue);
     text-align: right;
 }
 

@@ -1,5 +1,9 @@
 a[disabled] {pointer-events:none}
 
+main {
+    min-height: 45vh;
+}
+
 body {
     font-family: 'Noto Sans', sans-serif;
     padding: 0;
@@ -16,7 +20,7 @@ section {
 
 button {
     padding: 10px;
-    background-color: var(--dark-blue);
+    background: linear-gradient(to top, var(--dark-blue) 60%, var(--blue));
     color: white;
     border: none;
     border-radius: 1rem;

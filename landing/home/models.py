@@ -87,6 +87,7 @@ class LandingPage(MetadataPageMixin, Page):
     def get_context(self, request):
         context = super(LandingPage, self).get_context(request)
         context["days"] = [29, 30, 31] + list(range(1, 32)) + [1]
+        context["social_media"] = self.social_media
         return context
 
     content_panels = Page.content_panels + [
