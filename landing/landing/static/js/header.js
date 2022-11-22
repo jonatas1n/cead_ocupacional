@@ -1,3 +1,4 @@
+
 const headerLinks = document.querySelector('.header__links');
 const headerCloseBtn = document.querySelector('.header__close button')
 

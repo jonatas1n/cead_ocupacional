@@ -43,17 +43,18 @@ const prevPic = () => {
     define();
 }
 
+for(let i = 0; i < state.count; i++) {
+    let dot = document.createElement('div');
+    dot.classList.add('carousel__dot');
+    carouselDots.appendChild(dot);
+}
+
 let pic = carouselPics.querySelector(`img:nth-child(${state.actual + 1})`);
 dot = carouselDots.querySelector(`.carousel__dot:nth-child(${state.actual + 1})`)
 pic.classList.add('active');
 dot.classList.add('active');
 if (state.count > 1) setInterval(nextPic, 8000);
 
-for(let i = 0; i < state.count; i++) {
-    let dot = document.createElement('div');
-    dot.classList.add('carousel__dot');
-    carouselDots.appendChild(dot);
-}
 
 nextBtn.addEventListener( 'click', nextPic);
 prevBtn.addEventListener( 'click', prevPic);

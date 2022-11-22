@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static i18n wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/templates/surveys/survey_page.css' %}">
+
+<main class="container">
+    <h1> {{page.name}}</h1>
+    <h2>{{page.date}}, às {{page.hour}}</h2>
+    <hr>
+    <div class="scheduling">
+        <p>Telefone: <b>{{page.phone}}</b></p>
+        <p>E-mail: <b>{{page.email}}</b></p>
+        <p>CPF: <b>{{page.cpf}}</b></p>
+        <p>CNPJ: <b>{{page.cnpj}}</b></p>
+        <p>Data de Nascimento:<b>{{page.birthday}}</b></p>
+        <p>Função: <b>{{page.function}}</b></p>
+        <p>Razão Social: <b>{{page.social_reason}}</b></p>
+        <p>Tipo de Contrato: <b>{{page.contract_type}}</b></p>
+        <p>Tipo de Exame: <b>{{page.exam_type}}</b></p>
+    </div>
+</main>
+
+{% endblock %}

@@ -4,8 +4,7 @@ from django.shortcuts import redirect
 from django.template.response import TemplateResponse
 from django.utils.translation import gettext_lazy as _
 from wagtail.core.hooks import register
-from wagtailstreamforms.serializers import FormSubmissionSerializer
-from wagtailstreamforms.models import FormSubmissionFile
+from survey.models import SurveyPage, SurveyPageIndex
 
 from wagtailstreamforms.utils.requests import get_form_instance_from_request
 
@@ -81,6 +80,33 @@ def process_form(page, request, *args, **kwargs):
             messages.success(
                 request, form_def.success_message, fail_silently=True
             )
+
+        replace_labels = {
+            'date': 'date',
+            'hour': 'hour',
+            'nome completo': 'name',
+            'função': 'function',
+            'telefone': 'phone', 
+            'e-mail da empresa': 'email',
+            'data de nascimento': 'birthday',
+            'rg': 'rg',
+            'cpf': 'cpf',
+            'razão social (dados do contratante)': 'social_reason',
+            'toxicológico': 'toxicologic',
+            'tipo de contrato': 'contract_type',
+            'cnpj': 'cnpj',
+            'tipo de exame': 'exam_type',
+        }
+
+        entries = [(replace_labels[field.label.lower()], field.value()) for field in form if field.label.lower() in replace_labels]
+        entries = dict(entries)
+        entries['title'] = f"{entries['date']} - {entries['hour']}"
+        print(entries)
+
+        survey_index = SurveyPageIndex.objects.all()[0].specific
+        survey_page = SurveyPage(**entries)
+        survey_index.add_child(instance=survey_page)
+        survey_index.save()
 
         redirect_page = form_def.post_redirect_page or page
 

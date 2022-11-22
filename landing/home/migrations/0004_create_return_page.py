@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("home", "0004_returnpage"),
+        ("home", "0003_auto_20221121_0444"),
     ]
 
     operations = [migrations.RunPython(create_return_page)]

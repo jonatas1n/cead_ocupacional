@@ -1,0 +1,9 @@
+.scheduling {
+    margin-top: 2rem;
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.scheduling p {
+    margin-block: 0;
+}

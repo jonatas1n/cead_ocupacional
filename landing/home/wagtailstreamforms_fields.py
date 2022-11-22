@@ -181,7 +181,7 @@ class DateField(BaseField):
 
     def get_options(self, block_value):
         options = super().get_options(block_value)
-        help_text = options.get("help_text") + "date_field"
+        help_text = options.get("help_text") + " date_field"
         is_birthday = block_value.get("birthday")
         if is_birthday:
             options.update({"help_text": str(help_text) + " birthday_field"})

@@ -1,5 +1,5 @@
 .modal {
-    display: grid;
+    display: flex;
     visibility: hidden;
     position: fixed;
     inset: 0;

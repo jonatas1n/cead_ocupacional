@@ -59,7 +59,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 65vh;
+  height: 70vh;
+  border-radius: .5rem;
+  transition: .35s;
+}
+
+.carousel:hover {
+  background: #00000033;
+}
+
+.carousel:hover .carousel__btn {
+  visibility: visible;
 }
 
 .carousel__dots {
@@ -93,9 +103,10 @@
 
 .carousel__pics img {
   border-radius: .5rem;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   display: none;
+  object-fit: cover;
 }
 
 .carousel__pics img.active {
@@ -110,6 +121,7 @@
   padding: 1rem;
   cursor: pointer;
   display: flex;
+  visibility: hidden;
   place-items: center;
 }
 
@@ -121,3 +133,22 @@
 
 .carousel__btn.right {right: 1rem;}
 .carousel__btn.left {left: 1rem;}
+
+@media screen and (max-width: 820px) {
+  .sides {
+    margin-top: 2rem;
+    grid-template-columns: auto;
+  }
+
+  .sides.open {
+    grid-template-columns: 1fr;
+  }
+
+  .sides.open .carousel {
+    display: none;
+  }
+
+  .carousel__btn {
+    display: none;
+  }
+}

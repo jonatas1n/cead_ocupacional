@@ -3,19 +3,17 @@
 
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/templates/home/home.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'css/templates/home/surveys.css' %}">
 
 <main class="container">
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><div class="icon bg_white"></div> {{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% include_block page.surveys %}
+    {% for schedule in schedules %}
+    {{schedule.privacy}}
+    <div class="schedule" style="margin-bottom: 1rem;">
+        <a href="/{{schedule.slug}}">
+            {{schedule.name}} | {{schedule.date}}
+        </a>
+    </div>
+    {% endfor %}
 </main>
 
 {% endblock %}

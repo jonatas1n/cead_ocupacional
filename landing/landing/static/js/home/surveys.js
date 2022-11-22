@@ -1,6 +1,13 @@
 const phoneInputs = document.querySelectorAll('input[type="tel"], .phone input');
+const hourField = document.querySelector('#id_hour');
+const dateField = document.querySelector('#id_date');
 
-document.querySelector('.modal').addEventListener('modal__open', setQuestionsModal)
+const searchParams = new URLSearchParams(document.location.search);
+hourField.value = searchParams.get('hour');
+dateField.value = searchParams.get('date');
+
+document.querySelector('.modal')
+  .addEventListener('modal__open', setQuestionsModal);
 
 setFormValidations();
 setDateInputs();
@@ -13,10 +20,9 @@ function setQuestionsModal() {
     let label = question.querySelector('label').innerText;
     let input = question.querySelector('label + *');
     var value = null;
-    if (input.tagName == 'UL') {
-      let inputChecked = input.querySelector('input:checked');
-      value = inputChecked?.value
-    } 
+
+    if (input.type == 'checkbox')
+      value = input.checked ? "Sim" : "Não";
     value ??= input.value
     return {label, value, classes};
   })
@@ -128,17 +134,8 @@ function setEmailConfirmation() {
   });
 }
 
-function setFormValidations() {
-  setCPFmask();
-  setPhoneMask();
-  setEmailConfirmation();
-  setFormSubmit();
-  setDateValidations();
-  setUrlValidations();
-}
-
 function setDateValidations() {
-  const birthdayInputs = document.querySelectorAll('.birthday-field input');
+  const birthdayInputs = document.querySelectorAll('.birthday_field input');
   birthdayInputs.forEach(input => {
     input.max = new Date().toISOString().split('T')[0]; // set max date to today
     input.addEventListener('input',(e) => {
@@ -189,4 +186,13 @@ function removeError(element) {
   errorDiv = element.querySelector('.requided_error');
   element.classList.remove('error');
   element.removeChild(errorDiv);
+}
+
+function setFormValidations() {
+  setCPFmask();
+  setPhoneMask();
+  setEmailConfirmation();
+  setFormSubmit();
+  setDateValidations();
+  setUrlValidations();
 }
